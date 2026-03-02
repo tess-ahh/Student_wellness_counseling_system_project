@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Appointments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h2>📋 Scheduled Appointments</h2>
+    </div>
+
+    <div class="card">
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Student</th>
+                <th>Counselor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+            </tr>
+
+            {% for a in appointments %}
+            <tr>
+                <td>{{ a.appointment_id }}</td>
+                <td>{{ a.student_name }}</td>
+                <td>{{ a.counselor_name }}</td>
+                <td>{{ a.appointment_date }}</td>
+                <td>{{ a.appointment_time }}</td>
+                <td>{{ a.status }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+    <div style="text-align:center;">
+        <a class="menu-btn secondary" href="/">⬅ Back to Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>

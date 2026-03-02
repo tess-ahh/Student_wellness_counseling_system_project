@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Follow-Up Actions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h2>🔁 Follow-Up Actions</h2>
+    </div>
+
+    <div class="card">
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Student</th>
+                <th>Referred To</th>
+                <th>Action Date</th>
+                <th>Action Taken</th>
+                <th>Outcome</th>
+                <th>Next Review</th>
+            </tr>
+
+            {% for f in followups %}
+            <tr>
+                <td>{{ f.follow_up_id }}</td>
+                <td>{{ f.student_name }}</td>
+                <td>{{ f.referred_to }}</td>
+                <td>{{ f.action_date }}</td>
+                <td>{{ f.action_taken }}</td>
+                <td>{{ f.outcome }}</td>
+                <td>{{ f.next_review_date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+    <div style="text-align:center;">
+        <a class="menu-btn secondary" href="/">⬅ Back to Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>

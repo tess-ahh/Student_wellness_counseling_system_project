@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h2>👤 Add New Student</h2>
+        <p style="text-align:center; color:#666;">
+            Enter student details to register them in the wellness system
+        </p>
+    </div>
+
+    <div class="card">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="post">
+
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Enter full name" required>
+
+            <label>Department</label>
+            <input type="text" name="department" placeholder="e.g. Computer Science">
+
+            <label>Year of Study</label>
+            <input type="number" name="year" min="1" max="8" placeholder="1 – 8" required>
+
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="example@college.edu" required>
+
+            <label>Phone Number</label>
+            <input type="text" name="phone" placeholder="Optional">
+
+            <label style="margin-top:10px;">
+                <input type="checkbox" name="consent_to_share">
+                Consent to share data for external referrals
+            </label>
+
+            <button type="submit" style="margin-top:15px;">➕ Add Student</button>
+
+        </form>
+    </div>
+
+    <div style="text-align:center;">
+        <a class="menu-btn secondary" href="/">⬅ Back to Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>

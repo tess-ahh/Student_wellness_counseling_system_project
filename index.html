@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Wellness Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="card">
+        <h1>🎓 Student Wellness & Counseling Dashboard</h1>
+        <p style="text-align:center; color:#666;">
+            Centralized system for managing students, counseling sessions, referrals and feedback
+        </p>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:20px; margin-top:30px;">
+
+        <div class="card">
+            <h2>👤 Students</h2>
+            <p>Register and manage student details</p>
+            <a class="menu-btn" href="/add_student">Add Student</a>
+        </div>
+
+        <div class="card">
+            <h2>📅 Appointments</h2>
+            <p>Schedule and view counseling appointments</p>
+            <a class="menu-btn" href="/book_appointment">Book Appointment</a>
+            <a class="menu-btn secondary" href="/view_appointments">View Appointments</a>
+        </div>
+
+        <div class="card">
+            <h2>🧠 Counseling</h2>
+            <p>Record counseling sessions securely</p>
+            <a class="menu-btn" href="/record_session">Record Session</a>
+        </div>
+
+        <div class="card">
+            <h2>📤 Referrals</h2>
+            <p>Manage internal & external referrals</p>
+            <a class="menu-btn" href="/create_referral">Create Referral</a>
+            <a class="menu-btn secondary" href="/view_followups">View Follow-Ups</a>
+        </div>
+
+        <div class="card">
+            <h2>⭐ Feedback</h2>
+            <p>Anonymous student feedback & ratings</p>
+            <a class="menu-btn" href="/submit_feedback">Submit Feedback</a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <p style="text-align:center; margin-top:40px; color:#888; font-size:14px;">
+        © 2026 Student Wellness System | Academic Project
+    </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Record Counseling Session</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h2>📝 Record Counseling Session</h2>
+        <p style="text-align:center; color:#666;">
+            Securely document counseling session details
+        </p>
+    </div>
+
+    <div class="card">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="post">
+
+            <label>Student</label>
+            <select name="student_id" required>
+                <option value="">Select Student</option>
+                {% for student in students %}
+                    <option value="{{ student.student_id }}">{{ student.full_name }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Counselor</label>
+            <select name="counselor_id" required>
+                <option value="">Select Counselor</option>
+                {% for counselor in counselors %}
+                    <option value="{{ counselor.counselor_id }}">{{ counselor.full_name }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Session Date</label>
+            <input type="date" name="session_date" required>
+
+            <label>Student Concerns</label>
+            <textarea name="concerns" rows="3" placeholder="Briefly describe student concerns" required></textarea>
+
+            <label>Session Notes (Confidential)</label>
+            <textarea name="session_notes" rows="4" placeholder="Detailed counselor notes" required></textarea>
+
+            <label>Risk Level</label>
+            <select name="risk_level" required>
+                <option value="Low">Low</option>
+                <option value="Moderate">Moderate</option>
+                <option value="High">High</option>
+                <option value="Critical">Critical</option>
+            </select>
+
+            <label>Next Steps / Recommendations</label>
+            <textarea name="next_steps" rows="3" placeholder="Follow-up actions or referrals"></textarea>
+
+            <button type="submit" style="margin-top:15px;">💾 Save Session</button>
+
+        </form>
+    </div>
+
+    <div style="text-align:center;">
+        <a class="menu-btn secondary" href="/">⬅ Back to Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>
