@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Student Wellness Counseling System{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Premium Sticky Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">🎓 WellnessPortal</a>
+            <ul class="nav-links">
+                <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Dashboard</a></li>
+                <li><a href="/add_student" class="{% if request.path == '/add_student' %}active{% endif %}">Students</a></li>
+                <li><a href="/view_appointments" class="{% if request.path in ['/view_appointments', '/book_appointment'] %}active{% endif %}">Appointments</a></li>
+                <li><a href="/record_session" class="{% if request.path == '/record_session' %}active{% endif %}">Sessions</a></li>
+                <li><a href="/view_followups" class="{% if request.path in ['/view_followups', '/create_referral', '/add_followup'] %}active{% endif %}">Referrals</a></li>
+                <li><a href="/submit_feedback" class="{% if request.path == '/submit_feedback' %}active{% endif %}">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container">
+        
+        <!-- Centralized Flash Alert Notifications -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-container">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">
+                            {% if category == 'success' %}
+                                <span>✅</span>
+                            {% else %}
+                                <span>⚠️</span>
+                            {% endif %}
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Inherited Page Content -->
+        {% block content %}{% endblock %}
+
+    </main>
+
+    <!-- Shared Responsive Footer -->
+    <footer>
+        <p>© 2026 Student Wellness & Counseling System | Academic Database Project</p>
+    </footer>
+
+</body>
+</html>
